@@ -57,5 +57,3 @@ If you have problems using your instance of Ghost, you should check the [officia
 ## License
 
 Released under the [MIT license](./LICENSE), just like the Ghost project itself.
-
-TEST :)
