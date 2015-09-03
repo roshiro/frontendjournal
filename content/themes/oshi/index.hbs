@@ -1,0 +1,62 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The big featured header on the homepage, with the site logo and description }}
+<header class="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="vertical">
+        <div class="site-head-content inner">
+          <div class="left">
+            {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
+          </div>
+          <div class="right">
+            <h1 class="blog-title">{{@blog.title}}</h1>
+            <h2 class="blog-description">{{@blog.description}}</h2>
+            <div class="contact">
+              <a class="twitter" title="Twitter" target="_blank" href="http://twitter.com/roshiro"><span class='symbol'>roundedtwitterbird</span></a>
+              <a class="gplus" title="Google Plus" target="_blank" href="https://plus.google.com/+RafaelOshiro/posts"><span class='symbol'>roundedgoogleplus</span></a>
+              <a class="github" title="GitHub" target="_blank" href="http://github.com/roshiro"><span class='symbol'>roundedgithubalt</span></a>
+              <a class="linkedin" title="Linkedin" target="_blank" href="http://ie.linkedin.com/in/rafaeloshiro/"><span class='symbol'>roundedlinkedin</span></a>
+              <a class="stackoverflow" title="Stackoverflow" target="_blank" href="http://stackoverflow.com/users/2866667/roshiro"><span class='symbol'>roundedstackoverflow</span></a>
+            </div>
+          </div>
+          <div class="mail-subscription-main">
+            <form class="validate" id="mc-embedded-subscribe-form" action="http://twitter.us6.list-manage.com/subscribe/post?u=a9a675627044c215a33b477ab&amp;id=9c200ddaef" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+              <p class="title">Get the latest articles right to your inbox</span>
+              <div class="input-wrapper">
+                <input type="email" id="mce-EMAIL" name="EMAIL" placeholder="bob@frontendjournal.com">
+                <input id="mc-embedded-subscribe" type="submit" name="subscribe" value="Subscribe" />
+              </div>
+              <p class="no-spam">I'll never share your email address or spam you.</p>
+            </form>
+          </div>
+        </div>
+    </div>
+</header>
+
+{{! The main content area on the homepage }}
+<main class="content" role="main">
+
+    {{! Each post will be output using this markup }}
+    {{#foreach posts}}
+
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <span class="post-meta"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time> {{tags prefix="- tags: "}}</span>
+            <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+
+        </header>
+        <section class="post-excerpt">
+
+            <p>{{content words="0"}}</p>
+            <p><a href="{{url}}">Read more</a></p>
+        </section>
+    </article>
+
+    {{/foreach}}
+
+    {{!! After all the posts, we have the previous/next pagination links }}
+    {{pagination}}
+
+</main>
